@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseUrl = '/api/persons'
-// Here, We no longer return the promise returned by axios directly. 
+const baseUrl = 'http://localhost:3001/api/persons'
+//Here, We no longer return the promise returned by axios directly. 
 //Instead, we assign the promise to the request variable 
 //and call its then method:
 const getAll = () => {
@@ -27,5 +27,5 @@ const remove = (id) => {
 return request.then(respone => respone.data) 
 }
 
-export default { getAll, create, update, remove}
+export default {getAll, create, update, remove}
 
