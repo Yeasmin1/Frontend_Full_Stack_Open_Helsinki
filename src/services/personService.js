@@ -5,11 +5,7 @@ const baseUrl = '/api/persons'
 //and call its then method:
 const getAll = () => {
   const request = axios.get(baseUrl)
-  const nonExisting = {
-    id: 10000,
-    content: 'This name is not saved to server'
-  }
-  return request.then(response => response.data.concat(nonExisting))
+  return request.then(response => response.data)
 }
 
 const create = newObject => {
