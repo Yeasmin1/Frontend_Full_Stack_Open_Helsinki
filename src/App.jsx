@@ -27,6 +27,9 @@ const App = () => {
         console.log('promise fulfilled')
         setPersons(initialPersons)
       })
+      .catch(error => {
+        console.error('There was an error fetching the data!')
+      })
   }, [])
   console.log('render', persons.length, 'persons')
 
