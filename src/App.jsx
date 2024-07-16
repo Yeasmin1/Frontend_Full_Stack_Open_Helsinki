@@ -19,12 +19,13 @@ const App = () => {
       .then(createdPerson => {
         console.log('promise fulfilled')
         setPersons(createdPerson)
+        setFilteredPersons(createdPerson)
       })
       .catch(error => {
-         // this is the way to access the error message
         console.log(error.response.data.error)
       })
   }, [])
+
   console.log('render', persons.length, 'persons')
 
   const addName = (event) => {
@@ -85,6 +86,7 @@ const App = () => {
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }
+  
   const handleNumberChange = (event) => {
     setNewNumber(event.target.value)
   }

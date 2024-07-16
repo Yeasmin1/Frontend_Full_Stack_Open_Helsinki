@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const Persons = ({filteredPersons, deletePerson}) => {
     console.log('seraching here in the persons file', filteredPersons)
     // Check if items is defined and not empty
@@ -19,4 +20,15 @@ const Persons = ({filteredPersons, deletePerson}) => {
         </div>
     )
 }
+
+Persons.propTypes = {
+    filteredPersons: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    deletePerson: PropTypes.func.isRequired,
+  };
 export default Persons;

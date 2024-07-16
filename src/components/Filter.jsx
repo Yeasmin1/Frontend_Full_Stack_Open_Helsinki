@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const Filter =({ filteredInputName,handleFilteredInputChange})=> {
         return(
             <div>
@@ -9,4 +10,10 @@ const Filter =({ filteredInputName,handleFilteredInputChange})=> {
             </div>
         )
 }
+
+Filter.propTypes = {
+    filteredInputName: PropTypes.string.isRequired,
+    handleFilteredInputChange: PropTypes.func.isRequired,
+};
+  
 export default Filter;

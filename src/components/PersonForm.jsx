@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const PersonForm =({newName,newNumber,addName,handleNameChange,handleNumberChange})=> {
     return(
         <div>
@@ -24,4 +25,13 @@ const PersonForm =({newName,newNumber,addName,handleNameChange,handleNumberChang
         </div>
     )
 }
+
+PersonForm.propTypes = {
+    newName: PropTypes.string.isRequired,
+    newNumber: PropTypes.string.isRequired,
+    addName: PropTypes.func.isRequired,
+    handleNameChange: PropTypes.func.isRequired,
+    handleNumberChange: PropTypes.func.isRequired,
+  };
+  
 export default PersonForm;

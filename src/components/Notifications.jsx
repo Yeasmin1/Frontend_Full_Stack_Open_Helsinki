@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const Notifications = ({message, type}) => {
     if (message === null){
         return null
@@ -17,4 +18,10 @@ const Notifications = ({message, type}) => {
         </div>   
     )
 }
+
+Notifications.propTypes = {
+    message: PropTypes.string,
+    type: PropTypes.oneOf(['success', 'error']),
+  };
+  
 export default Notifications;
