@@ -41,8 +41,12 @@ const App = () => {
        personService
         .update(nameExists.id, {...nameExists,number:newNumber})
         .then(returnedPerson => {
-          setPersons(persons.map(person => person.id !== nameExists.id ? person : returnedPerson))
+          const updatedPersons = persons.map(person => person.id !== nameExists.id ? person : returnedPerson)
+          setPersons(updatedPersons)
+          setFilteredPersons (updatedPersons)
+          setNewName('')
           setNewNumber('')
+          showNotification(`Updated ${newName}'s number`, 'success');
         })   
         .catch(error => {
           showNotification(`Information of ${newName} has already been removed from server`, 'error');
@@ -52,10 +56,12 @@ const App = () => {
       personService
       .create(newObject)
       .then(returnedPerson => {
-        console.log('new person add',returnedPerson)
-        setPersons(persons.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('')
+        const updatedPersons = persons.concat(returnedPerson)
+        setPersons(updatedPersons);
+        setFilteredPersons(updatedPersons);
+        setNewName('');
+        setNewNumber('');
+        showNotification(`Added ${newName}`, 'success');
       })
       .catch(error => {
         showNotification(`Failed to add ${newName}`, 'error');
@@ -95,7 +101,9 @@ const App = () => {
     const person = persons.find(c => c.id === id);
     if (person && window.confirm(`Delete ${person.name}?`)) {
       personService.remove(id).then(() => {
-        setPersons(persons.filter(c => c.id !== id));
+        const updatedPerson = persons.filter(c => c.id !== id);
+        setPersons(updatedPerson)
+        setFilteredPersons(updatedPerson)
         showNotification(`Deleted ${person.name}`, 'success');
       }).catch(error => {
         showErrorNotification(`Failed to delete ${person.name} (frontend)`, 'error');
